@@ -23,11 +23,11 @@ export default function SearchFlights() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-aurora/5 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-solar/5 rounded-full blur-[100px] pointer-events-none" />
 
-            <h1 className="text-4xl md:text-6xl font-heading font-semibold mb-12 flex items-center gap-4 md:gap-6">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-heading font-semibold mb-8 sm:mb-12 flex flex-wrap items-center gap-2 sm:gap-4 md:gap-6">
                 <span className="text-stardust">NYC</span>
-                <ArrowRight className="text-aurora w-8 h-8 md:w-10 md:h-10" />
+                <ArrowRight className="text-aurora w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
                 <span className="text-stardust">MLE</span>
-                <span className="text-sm md:text-xl text-comet font-ui uppercase tracking-widest ml-4 mt-2 border-l border-white/20 pl-4">Nov 12, 2 Passengers</span>
+                <span className="text-xs sm:text-sm md:text-xl text-comet font-ui uppercase tracking-widest ml-2 sm:ml-4 mt-1 sm:mt-2 border-l border-white/20 pl-2 sm:pl-4">Nov 12, 2 Passengers</span>
             </h1>
 
             <div className="flex flex-col lg:flex-row gap-8 md:gap-12">

@@ -26,8 +26,8 @@ export default function BookingDetails() {
                                 onClick={() => setSelectedSeat(seat.id)}
                                 data-hover-type={seat.status !== 'occupied' ? 'SELECT' : null}
                                 className={`
-                                    w-12 h-14 rounded-t-xl rounded-b-md relative shadow-lg transform-gpu transition-all duration-300
-                                    ${isAisle ? 'mr-8' : ''}
+                                    w-10 h-12 sm:w-12 sm:h-14 rounded-t-xl rounded-b-md relative shadow-lg transform-gpu transition-all duration-300
+                                    ${isAisle ? 'mr-4 sm:mr-8' : ''}
                                     ${selectedSeat === seat.id
                                         ? 'bg-aurora text-cosmic scale-110 !z-20 -translate-y-4 shadow-aurora/40 shadow-xl'
                                         : seat.status === 'occupied'
@@ -82,7 +82,7 @@ export default function BookingDetails() {
             </div>
 
             {/* Progress Steps */}
-            <div className="flex items-center justify-between max-w-2xl mx-auto mb-16 relative">
+                <div className="flex items-center justify-between max-w-2xl mx-auto mb-10 sm:mb-16 relative px-2">
                 <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-10" />
                 <div className="absolute top-1/2 left-0 h-[1px] bg-gradient-to-r from-aurora to-stellar transition-all duration-500" style={{ width: `${((step - 1) / 3) * 100}%` }} />
 

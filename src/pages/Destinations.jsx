@@ -15,7 +15,7 @@ function DestinationCard({ dest, idx, scrollYProgress }) {
     return (
         <motion.div
             style={{ y: yOffset }}
-            className="group relative h-[500px] md:h-[700px] rounded-[32px] overflow-hidden cursor-pointer isolate transform-gpu transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_20px_60px_rgba(167,139,250,0.12)]"
+            className="group relative h-[350px] sm:h-[500px] md:h-[700px] rounded-[24px] sm:rounded-[32px] overflow-hidden cursor-pointer isolate transform-gpu transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_20px_60px_rgba(167,139,250,0.12)]"
             data-hover-type="EXPLORE"
         >
             {/* Image layer */}
@@ -78,7 +78,7 @@ export default function Destinations() {
                     className="mb-16 md:mb-24 flex flex-col md:flex-row items-start md:items-end justify-between gap-6"
                 >
                     <div>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-stardust max-w-2xl leading-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-stardust max-w-2xl leading-tight">
                             Explore Our <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-aurora via-stellar to-solar">World</span>
                         </h1>

@@ -78,4 +78,19 @@
 /* Smooth scroll for page */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Mobile touch improvements */
+@media (pointer: coarse) {
+    button, a, input, select {
+        min-height: 44px;
+    }
+}
+
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 767px) {
+    body {
+        overflow-x: hidden;
+    }
 }

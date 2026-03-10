@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Navigation as Compass, X, Move } from 'lucide-react';
+import { Navigation as Compass, X, Move, ChevronRight } from 'lucide-react';
 
 const MENU_ITEMS = [
     { name: 'Home', path: '/', x: 12, y: 25 },
@@ -19,6 +19,15 @@ export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const [hoveredIdx, setHoveredIdx] = useState(null);
     const constraintRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 767px)');
+        setIsMobile(mq.matches);
+        const handler = (e) => setIsMobile(e.matches);
+        mq.addEventListener('change', handler);
+        return () => mq.removeEventListener('change', handler);
+    }, []);
 
     // Lock body scroll when menu is open
     useEffect(() => {
@@ -46,10 +55,10 @@ export default function Navigation() {
             <button
                 onClick={() => setIsOpen(true)}
                 aria-label="Open navigation menu"
-                className="fixed top-8 right-8 z-[50] w-14 h-14 bg-nebula/80 backdrop-blur-md border border-aurora/20 rounded-full flex items-center justify-center text-stardust hover:text-aurora hover:border-aurora/50 hover:shadow-[0_0_20px_rgba(167,139,250,0.3)] transition-all duration-300 group"
+                className="fixed top-4 right-4 sm:top-8 sm:right-8 z-[50] w-12 h-12 sm:w-14 sm:h-14 bg-nebula/80 backdrop-blur-md border border-aurora/20 rounded-full flex items-center justify-center text-stardust hover:text-aurora hover:border-aurora/50 hover:shadow-[0_0_20px_rgba(167,139,250,0.3)] transition-all duration-300 group"
                 data-hover-type="MENU"
             >
-                <Compass size={24} className="group-hover:rotate-90 transition-transform duration-500" />
+                <Compass size={22} className="group-hover:rotate-90 transition-transform duration-500" />
             </button>
 
             <AnimatePresence>
@@ -82,13 +91,44 @@ export default function Navigation() {
                         <button
                             onClick={() => setIsOpen(false)}
                             aria-label="Close navigation menu"
-                            className="absolute top-8 right-8 z-[70] p-4 text-stardust hover:text-aurora transition-colors duration-300"
+                            className="absolute top-4 right-4 sm:top-8 sm:right-8 z-[70] p-3 sm:p-4 text-stardust hover:text-aurora transition-colors duration-300"
                             data-hover-type="CLOSE"
                         >
-                            <X size={32} />
+                            <X size={28} />
                         </button>
 
-                        {/* Draggable map container */}
+                        {/* Mobile: stacked list menu */}
+                        {isMobile ? (
+                            <div className="absolute inset-0 flex flex-col justify-center px-8 overflow-y-auto py-20">
+                                <nav className="space-y-1" aria-label="Main navigation">
+                                    {MENU_ITEMS.map((item, idx) => (
+                                        <motion.div
+                                            key={item.name}
+                                            initial={{ opacity: 0, x: -30 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.15 + idx * 0.06, duration: 0.4 }}
+                                        >
+                                            <Link
+                                                to={item.path}
+                                                onClick={() => setIsOpen(false)}
+                                                className="flex items-center justify-between py-4 border-b border-white/5 group"
+                                                aria-label={`Navigate to ${item.name}`}
+                                            >
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-2 h-2 rounded-full bg-aurora group-hover:bg-solar group-hover:shadow-[0_0_12px_rgba(251,146,60,0.6)] transition-all" />
+                                                    <span className="text-2xl font-heading font-semibold text-stardust/70 group-hover:text-stardust transition-colors">
+                                                        {item.name}
+                                                    </span>
+                                                </div>
+                                                <ChevronRight className="w-5 h-5 text-comet/30 group-hover:text-aurora group-hover:translate-x-1 transition-all" />
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </nav>
+                            </div>
+                        ) : (
+                        /* Desktop: draggable map container */
+                        <>
                         <div ref={constraintRef} className="absolute inset-0 overflow-hidden">
                             <motion.div
                                 drag
@@ -182,6 +222,8 @@ export default function Navigation() {
                             <Move size={14} className="text-comet/40" />
                             Drag to pan &middot; Select a destination
                         </motion.div>
+                        </>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>

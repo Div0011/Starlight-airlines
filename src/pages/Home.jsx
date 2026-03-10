@@ -224,12 +224,12 @@ export default function Home() {
                 >
                     <div className="flex flex-col items-center">
                         <motion.h1
-                            className="text-5xl sm:text-6xl md:text-8xl font-heading font-bold text-stardust drop-shadow-2xl tracking-tighter text-center whitespace-nowrap"
+                            className="text-3xl sm:text-5xl md:text-8xl font-heading font-bold text-stardust drop-shadow-2xl tracking-tighter text-center"
                             style={{ textShadow: '0 0 60px rgba(167,139,250,0.3)' }}
                         >
                             STARLIGHT AIRLINES
                         </motion.h1>
-                        <p className="font-ui text-aurora uppercase tracking-[0.4em] mt-4 text-center text-sm">Escape to Paradise</p>
+                        <p className="font-ui text-aurora uppercase tracking-[0.2em] sm:tracking-[0.4em] mt-3 sm:mt-4 text-center text-xs sm:text-sm">Escape to Paradise</p>
                         <motion.div
                             className="mt-8 w-16 h-[2px] bg-gradient-to-r from-transparent via-aurora to-transparent"
                             initial={{ scaleX: 0 }}
@@ -244,8 +244,8 @@ export default function Home() {
                     className="absolute inset-0 flex items-center justify-center pt-[10%] z-20 pointer-events-none"
                     style={{ opacity: formOpacity, y: formYValue, scale: formScale }}
                 >
-                    <motion.div className="bg-nebula/60 backdrop-blur-2xl border border-aurora/10 p-8 md:p-10 rounded-[32px] shadow-[0_0_60px_rgba(167,139,250,0.08)] w-full max-w-4xl mx-4 transform-gpu" style={{ pointerEvents: formPointer }}>
-                        <h2 className="text-3xl md:text-4xl font-heading font-semibold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-aurora via-stellar to-solar">Where to next?</h2>
+                    <motion.div className="bg-nebula/60 backdrop-blur-2xl border border-aurora/10 p-5 sm:p-8 md:p-10 rounded-[24px] sm:rounded-[32px] shadow-[0_0_60px_rgba(167,139,250,0.08)] w-full max-w-4xl mx-4 transform-gpu" style={{ pointerEvents: formPointer }}>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold mb-5 sm:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-aurora via-stellar to-solar">Where to next?</h2>
                         <form
                             className="grid grid-cols-1 md:grid-cols-4 gap-5"
                             onSubmit={(e) => { e.preventDefault(); navigate('/search'); }}
@@ -323,7 +323,7 @@ export default function Home() {
                             <div className="flex-1 space-y-8">
                                 <div>
                                     <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-4 text-sm">Unrivaled Comfort</h2>
-                                    <h3 className="text-4xl md:text-5xl font-heading font-semibold text-stardust">The Art of <br /> Premium Travel</h3>
+                                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-heading font-semibold text-stardust">The Art of <br /> Premium Travel</h3>
                                     <p className="text-comet font-ui leading-loose mt-6 max-w-lg">
                                         Experience the luxury of absolute privacy and five-star dining miles above the clouds.
                                         Every detail of your journey is crafted for utmost comfort and serene relaxation.
@@ -354,9 +354,9 @@ export default function Home() {
                     style={{ opacity: fleetOpacity, y: fleetYValue }}
                 >
                     <motion.div className="max-w-6xl w-full px-6 md:px-8" style={{ pointerEvents: fleetPointer }}>
-                        <div className="text-center mb-14">
-                            <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-4 text-sm">Our Fleet</h2>
-                            <h3 className="text-4xl md:text-6xl font-heading font-semibold text-stardust">Flying the Future</h3>
+                        <div className="text-center mb-8 sm:mb-14">
+                            <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-3 sm:mb-4 text-xs sm:text-sm">Our Fleet</h2>
+                            <h3 className="text-3xl sm:text-4xl md:text-6xl font-heading font-semibold text-stardust">Flying the Future</h3>
                             <p className="text-comet font-ui mt-4 max-w-2xl mx-auto leading-relaxed">The most modern fleet in the sky. Quiet cabins, panoramic windows, and zero-emission engines on every route.</p>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
@@ -379,9 +379,9 @@ export default function Home() {
                                 </motion.div>
                             ))}
                         </div>
-                        <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center items-center">
+                        <div className="mt-8 sm:mt-12 flex flex-wrap md:flex-nowrap gap-3 sm:gap-4 justify-center items-center">
                             {['Boeing 787 Dreamliner', 'Airbus A350-1000', 'Boeing 777X', 'Airbus A321neo'].map((plane, idx) => (
-                                <div key={idx} className="px-6 py-3 rounded-full border border-white/10 text-comet font-ui text-sm tracking-wider hover:border-aurora/30 hover:text-stardust transition-all">
+                                <div key={idx} className="px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/10 text-comet font-ui text-xs sm:text-sm tracking-wider hover:border-aurora/30 hover:text-stardust transition-all">
                                     {plane}
                                 </div>
                             ))}
@@ -395,7 +395,7 @@ export default function Home() {
                     style={{ opacity: loyOpacity, y: loyYValue }}
                 >
                     <motion.div className="max-w-6xl w-full px-6 md:px-8" style={{ pointerEvents: loyPointer }}>
-                        <div className="bg-gradient-to-br from-nebula/90 to-cosmic/90 backdrop-blur-2xl border border-solar/15 p-10 md:p-16 rounded-[32px] flex flex-col md:flex-row items-center gap-12 md:gap-16 relative overflow-hidden shadow-[0_0_60px_rgba(251,146,60,0.06)]">
+                        <div className="bg-gradient-to-br from-nebula/90 to-cosmic/90 backdrop-blur-2xl border border-solar/15 p-6 sm:p-10 md:p-16 rounded-[24px] sm:rounded-[32px] flex flex-col md:flex-row items-center gap-8 sm:gap-12 md:gap-16 relative overflow-hidden shadow-[0_0_60px_rgba(251,146,60,0.06)]">
                             <div className="absolute top-0 right-0 w-96 h-96 bg-solar/5 rounded-full blur-[120px]" />
                             <div className="absolute bottom-0 left-0 w-72 h-72 bg-aurora/5 rounded-full blur-[100px]" />
                             <div className="flex-1 z-10">
@@ -403,7 +403,7 @@ export default function Home() {
                                     <Star className="text-solar fill-solar w-6 h-6" />
                                     <span className="font-ui tracking-[0.3em] uppercase text-solar text-sm">Starlight Rewards</span>
                                 </div>
-                                <h2 className="text-4xl md:text-5xl font-heading font-semibold text-stardust mb-6">Elevate your status.</h2>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-semibold text-stardust mb-4 sm:mb-6">Elevate your status.</h2>
                                 <p className="text-comet font-ui leading-loose mb-8">
                                     Earn miles on every journey. Redeem for complimentary upgrades, luxury hotel stays, and exclusive access to our world-wide network of premium lounges.
                                 </p>
@@ -433,7 +433,7 @@ export default function Home() {
                     <motion.div className="max-w-6xl w-full px-6 md:px-8" style={{ pointerEvents: testPointer }}>
                         <div className="text-center mb-14">
                             <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-4 text-sm">Traveler Stories</h2>
-                            <h3 className="text-4xl md:text-6xl font-heading font-semibold text-stardust">What Our Guests Say</h3>
+                                <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-semibold text-stardust">What Our Guests Say</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
@@ -470,7 +470,7 @@ export default function Home() {
                         <div className="flex justify-between items-end mb-12">
                             <div>
                                 <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-4 text-sm">Trending Now</h2>
-                                <h3 className="text-4xl md:text-5xl font-heading font-semibold text-stardust">Popular Routes</h3>
+                                <h3 className="text-3xl sm:text-4xl md:text-5xl font-heading font-semibold text-stardust">Popular Routes</h3>
                             </div>
                             <button onClick={() => navigate('/destinations')} className="hidden md:flex items-center gap-3 text-stardust font-ui uppercase tracking-widest text-sm hover:text-aurora transition-colors group" data-hover-type="VIEW ALL">
                                 All Routes <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -526,7 +526,7 @@ export default function Home() {
                     <motion.div className="max-w-[1400px] w-full px-6 md:px-8" style={{ pointerEvents: newsPointer }}>
                         <div className="flex justify-between items-end mb-12">
                             <div>
-                                <h2 className="text-4xl md:text-5xl font-heading font-semibold text-stardust">Latest Offers</h2>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-semibold text-stardust">Latest Offers</h2>
                                 <p className="font-ui text-aurora uppercase tracking-[0.2em] mt-3 text-sm">Curated just for you</p>
                             </div>
                             <button className="hidden md:flex items-center gap-3 text-stardust font-ui uppercase tracking-widest text-sm hover:text-aurora transition-colors group" data-hover-type="VIEW ALL">
@@ -565,7 +565,7 @@ export default function Home() {
                     style={{ opacity: ctaOpacity, y: ctaYValue }}
                 >
                     <motion.div className="max-w-5xl w-full px-6 md:px-8" style={{ pointerEvents: ctaPointer }}>
-                        <div className="bg-gradient-to-br from-aurora/10 via-nebula/80 to-stellar/10 backdrop-blur-2xl border border-aurora/15 rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_0_80px_rgba(167,139,250,0.08)]">
+                            <div className="bg-gradient-to-br from-aurora/10 via-nebula/80 to-stellar/10 backdrop-blur-2xl border border-aurora/15 rounded-[28px] sm:rounded-[40px] p-8 sm:p-12 md:p-20 text-center relative overflow-hidden shadow-[0_0_80px_rgba(167,139,250,0.08)]">
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-aurora/5 rounded-full blur-[120px]" />
                             <div className="relative z-10">
                                 <motion.div
@@ -575,7 +575,7 @@ export default function Home() {
                                 >
                                     <Plane className="w-10 h-10 text-white -rotate-45" />
                                 </motion.div>
-                                <h2 className="text-4xl md:text-6xl font-heading font-bold text-stardust mb-6">Ready for Takeoff?</h2>
+                                <h2 className="text-3xl sm:text-4xl md:text-6xl font-heading font-bold text-stardust mb-4 sm:mb-6">Ready for Takeoff?</h2>
                                 <p className="text-comet font-ui leading-relaxed max-w-2xl mx-auto mb-10 text-lg">
                                     Download the Starlight app for exclusive mobile-only fares, real-time flight tracking, and instant boarding passes.
                                 </p>
