@@ -5,6 +5,8 @@ import { Plane, Calendar, Users, Briefcase, ArrowRight, Star, Globe, Shield, Clo
 
 const FRAME_COUNT = 160;
 
+const BASE = import.meta.env.BASE_URL;
+
 export default function Home() {
     const containerRef = useRef(null);
     const canvasRef = useRef(null);
@@ -30,7 +32,7 @@ export default function Home() {
         for (let i = 1; i <= FRAME_COUNT; i++) {
             const img = new Image();
             const paddedIndex = i.toString().padStart(3, '0');
-            img.src = `/images/ezgif-frame-${paddedIndex}.jpg`;
+            img.src = `${BASE}images/ezgif-frame-${paddedIndex}.jpg`;
             img.onload = tick;
             img.onerror = tick; // count failures so we never get stuck
             loadedImages.push(img);
@@ -313,7 +315,7 @@ export default function Home() {
                     <motion.div className="max-w-[1400px] w-full px-6 md:px-8" style={{ pointerEvents: expPointer }}>
                         <div className="flex flex-col md:flex-row gap-12 items-center">
                             <div className="flex-1 w-full relative h-[400px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-2xl" data-hover-type="EXPLORE">
-                                <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] group-hover:scale-110" style={{ backgroundImage: "url('/images/business_class.png')" }} />
+                                <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] group-hover:scale-110" style={{ backgroundImage: `url('${BASE}images/business_class.png')` }} />
                                 <div className="absolute inset-0 bg-gradient-to-t from-cosmic/90 via-cosmic/20 to-transparent" />
                                 <div className="absolute bottom-8 left-8 text-stardust">
                                     <h3 className="text-3xl md:text-4xl font-heading font-semibold mb-2">The Celestial Suite</h3>
@@ -330,14 +332,14 @@ export default function Home() {
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-6 group hover:translate-x-1 transition-transform">
-                                    <div className="w-20 h-20 rounded-full overflow-hidden bg-cover bg-center border border-aurora/20 group-hover:border-aurora/50 transition-colors shadow-lg" style={{ backgroundImage: "url('/images/fine_dining.png')" }} />
+                                    <div className="w-20 h-20 rounded-full overflow-hidden bg-cover bg-center border border-aurora/20 group-hover:border-aurora/50 transition-colors shadow-lg" style={{ backgroundImage: `url('${BASE}images/fine_dining.png')` }} />
                                     <div>
                                         <div className="font-heading text-xl text-stardust">Gourmet Dining</div>
                                         <div className="font-ui text-xs tracking-widest uppercase text-comet mt-1">Curated by top chefs</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-6 group hover:translate-x-1 transition-transform">
-                                    <div className="w-20 h-20 rounded-full overflow-hidden bg-cover bg-center border border-aurora/20 group-hover:border-aurora/50 transition-colors shadow-lg" style={{ backgroundImage: "url('/images/luxury_lounge.png')" }} />
+                                    <div className="w-20 h-20 rounded-full overflow-hidden bg-cover bg-center border border-aurora/20 group-hover:border-aurora/50 transition-colors shadow-lg" style={{ backgroundImage: `url('${BASE}images/luxury_lounge.png')` }} />
                                     <div>
                                         <div className="font-heading text-xl text-stardust">Lounge Access</div>
                                         <div className="font-ui text-xs tracking-widest uppercase text-comet mt-1">Relax before departure</div>
@@ -419,7 +421,7 @@ export default function Home() {
                                 </button>
                             </div>
                             <div className="flex-1 w-full flex justify-center z-10 relative">
-                                <img src="/images/loyalty_card.png" className="w-[80%] max-w-[400px] object-cover rounded-3xl animate-float shadow-2xl" alt="Loyalty Card" />
+                                <img src={`${BASE}images/loyalty_card.png`} className="w-[80%] max-w-[400px] object-cover rounded-3xl animate-float shadow-2xl" alt="Loyalty Card" />
                             </div>
                         </div>
                     </motion.div>
@@ -535,9 +537,9 @@ export default function Home() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                             {[
-                                { title: 'Business Class Sale', desc: 'Secure up to 40% off on premium routes to Europe until Nov 30.', img: '/images/business_class.png' },
+                                { title: 'Business Class Sale', desc: 'Secure up to 40% off on premium routes to Europe until Nov 30.', img: `${BASE}images/business_class.png` },
                                 { title: 'New Maldives Route', desc: 'Direct daily flights starting this winter. Book now for introductory fares.', img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=95&w=1200' },
-                                { title: 'Michelin Star Dining', desc: 'Announcing our new inflight menu curated by world-renowned chefs.', img: '/images/fine_dining.png' }
+                                { title: 'Michelin Star Dining', desc: 'Announcing our new inflight menu curated by world-renowned chefs.', img: `${BASE}images/fine_dining.png` }
                             ].map((offer, idx) => (
                                 <motion.div
                                     key={idx}
