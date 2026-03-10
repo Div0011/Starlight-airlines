@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.env.*
+antigravity-awesome-skills/
+antigravity-skills/
+*.zip
+package-lock.json
