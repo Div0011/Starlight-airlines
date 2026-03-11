@@ -17,7 +17,7 @@ export default function SearchFlights() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.6 }}
-            className="min-h-screen pt-32 px-4 md:px-8 pb-16 w-full max-w-[1600px] mx-auto relative overflow-hidden"
+            className="min-h-screen pt-32 px-4 sm:px-6 md:px-8 pb-16 w-full max-w-[1600px] mx-auto relative overflow-hidden"
         >
             {/* Background glow */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-aurora/5 rounded-full blur-[120px] pointer-events-none" />

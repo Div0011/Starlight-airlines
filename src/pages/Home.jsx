@@ -51,7 +51,7 @@ function RevealSection({ children, variant = 'fadeIn', className = '', delay = 0
             viewport={{ once: true, amount: 0.15 }}
             variants={revealVariants[variant]}
             transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className={className}
+            className={`relative z-10 ${className}`}
         >
             {children}
         </motion.div>
@@ -149,7 +149,9 @@ export default function Home() {
             {!ready && (
                 <motion.div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B1629] flex-col gap-6" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
                     <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}>
-                        <Plane className="w-12 h-12 text-aurora" />
+                        <div className="w-12 h-12 flex items-center justify-center opacity-80 backdrop-blur-sm overflow-hidden p-1">
+                            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Starlight Logo" className="w-full h-full object-cover scale-110" />
+                        </div>
                     </motion.div>
                     <div className="text-stardust font-ui text-sm tracking-widest uppercase">
                         Preparing Departure... {Math.round((loaded / FRAME_COUNT) * 100)}%
@@ -192,9 +194,8 @@ export default function Home() {
                  GROUP 1 — Booking (Search + Experience)
                  Normal flow, subtle fade-in
                  ════════════════════════════════════════ */}
-
             {/* Search Form */}
-            <section className="relative py-24 sm:py-32">
+            <section className="relative py-24 sm:py-32 bg-pair-action">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-aurora/[0.03] rounded-full blur-[150px] animate-float" />
                     <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-solar/[0.03] rounded-full blur-[150px] animate-float-delayed" />
@@ -256,10 +257,10 @@ export default function Home() {
             </section>
 
             {/* The Experience */}
-            <section className="relative py-16 sm:py-24">
-                <RevealSection variant="fadeIn" className="max-w-[1400px] mx-auto px-6 md:px-8">
-                    <div className="flex flex-col md:flex-row gap-12 items-center">
-                        <div className="flex-1 w-full relative h-[400px] md:h-[500px] rounded-[32px] overflow-hidden group shadow-2xl" data-hover-type="EXPLORE">
+            <section className="relative py-16 sm:py-24 bg-pair-experience">
+                <RevealSection variant="fadeIn" className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
+                    <div className="flex flex-col md:flex-row gap-8 sm:gap-12 items-center">
+                        <div className="flex-1 w-full relative h-[300px] sm:h-[400px] md:h-[500px] rounded-[24px] sm:rounded-[32px] overflow-hidden group shadow-2xl" data-hover-type="EXPLORE">
                             <LazyImg src={`${BASE}images/business_class.png`} alt="Business Class" className="absolute inset-0" />
                             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] group-hover:scale-110" style={{ backgroundImage: `url('${BASE}images/business_class.png')` }} />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1629]/90 via-[#0B1629]/20 to-transparent" />
@@ -302,8 +303,8 @@ export default function Home() {
                  ════════════════════════════════════════ */}
 
             {/* Fleet & Stats */}
-            <section className="relative py-24 sm:py-32">
-                <RevealSection variant="slideUp" className="max-w-6xl mx-auto px-6 md:px-8">
+            <section className="relative py-24 sm:py-32 bg-pair-reach">
+                <RevealSection variant="slideUp" className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
                     <div className="text-center mb-8 sm:mb-14">
                         <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-3 sm:mb-4 text-xs sm:text-sm">Our Fleet</h2>
                         <h3 className="text-3xl sm:text-4xl md:text-6xl font-heading font-semibold text-stardust">Flying the Future</h3>
@@ -340,9 +341,9 @@ export default function Home() {
             </section>
 
             {/* Loyalty Program */}
-            <section className="relative py-16 sm:py-24">
-                <RevealSection variant="slideUp" delay={0.1} className="max-w-6xl mx-auto px-6 md:px-8">
-                    <div className="glass-card p-6 sm:p-10 md:p-16 rounded-[24px] sm:rounded-[32px] flex flex-col md:flex-row items-center gap-8 sm:gap-12 md:gap-16 relative overflow-hidden shadow-[0_8px_40px_rgba(59,130,246,0.08)]">
+            <section className="relative py-16 sm:py-24 bg-pair-engagement">
+                <RevealSection variant="slideUp" delay={0.1} className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+                    <div className="glass-card p-5 sm:p-10 md:p-16 rounded-[24px] sm:rounded-[32px] flex flex-col md:flex-row items-center gap-8 sm:gap-12 md:gap-16 relative overflow-hidden shadow-[0_8px_40px_rgba(59,130,246,0.08)]">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-solar/5 rounded-full blur-[120px]" />
                         <div className="absolute bottom-0 left-0 w-72 h-72 bg-aurora/5 rounded-full blur-[100px]" />
                         <div className="flex-1 z-10">
@@ -378,8 +379,8 @@ export default function Home() {
                  ════════════════════════════════════════ */}
 
             {/* Testimonials */}
-            <section className="relative py-24 sm:py-32">
-                <RevealSection variant="slideLeft" className="max-w-6xl mx-auto px-6 md:px-8">
+            <section className="relative py-24 sm:py-32 bg-pair-experience">
+                <RevealSection variant="slideLeft" className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
                     <div className="text-center mb-14">
                         <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-4 text-sm">Traveler Stories</h2>
                         <h3 className="text-3xl sm:text-4xl md:text-6xl font-heading font-semibold text-stardust">What Our Guests Say</h3>
@@ -411,7 +412,7 @@ export default function Home() {
             </section>
 
             {/* Explore Our World */}
-            <section className="relative py-16 sm:py-24">
+            <section className="relative py-16 sm:py-24 bg-pair-reach">
                 <RevealSection variant="slideRight" className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 sm:mb-8 md:mb-10 gap-3">
                         <div>
@@ -474,8 +475,8 @@ export default function Home() {
                  ════════════════════════════════════════ */}
 
             {/* Explore Our Offers */}
-            <section className="relative py-24 sm:py-32">
-                <RevealSection variant="zoomIn" className="max-w-[1400px] mx-auto px-6 md:px-8">
+            <section className="relative py-24 sm:py-32 bg-pair-action">
+                <RevealSection variant="zoomIn" className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-14 gap-4">
                         <div>
                             <h2 className="text-aurora font-ui uppercase tracking-[0.3em] mb-4 text-sm">Exclusive Deals</h2>
@@ -515,17 +516,17 @@ export default function Home() {
             </section>
 
             {/* CTA / Download App */}
-            <section className="relative py-16 sm:py-24 pb-32">
-                <RevealSection variant="zoomIn" delay={0.1} className="max-w-5xl mx-auto px-6 md:px-8">
-                    <div className="glass-card rounded-[28px] sm:rounded-[40px] p-8 sm:p-12 md:p-20 text-center relative overflow-hidden shadow-[0_8px_40px_rgba(59,130,246,0.08)]">
+            <section className="relative py-16 sm:py-24 pb-32 bg-pair-engagement">
+                <RevealSection variant="zoomIn" delay={0.1} className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+                    <div className="glass-card rounded-[24px] sm:rounded-[40px] p-6 sm:p-12 md:p-20 text-center relative overflow-hidden shadow-[0_8px_40px_rgba(59,130,246,0.08)]">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-aurora/5 rounded-full blur-[120px]" />
                         <div className="relative z-10">
                             <motion.div
-                                className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 sm:mb-8 rounded-3xl bg-gradient-to-br from-aurora to-aurora-deep flex items-center justify-center shadow-[0_4px_30px_rgba(59,130,246,0.4)]"
+                                className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 sm:mb-8 rounded-3xl bg-gradient-to-br flex items-center justify-center border border-white/10 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-sm overflow-hidden p-2"
                                 animate={{ y: [0, -8, 0] }}
                                 transition={{ duration: 3, repeat: Infinity }}
                             >
-                                <Plane className="w-10 h-10 text-white -rotate-45" />
+                                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Starlight Logo" className="w-full h-full object-cover scale-110" />
                             </motion.div>
                             <h2 className="text-2xl sm:text-4xl md:text-6xl font-heading font-bold text-stardust mb-4 sm:mb-6">Ready for Takeoff?</h2>
                             <p className="text-comet font-ui leading-relaxed max-w-2xl mx-auto mb-10 text-lg">

@@ -55,10 +55,10 @@ export default function Navigation() {
             <button
                 onClick={() => setIsOpen(true)}
                 aria-label="Open navigation menu"
-                className="fixed top-4 right-4 sm:top-8 sm:right-8 z-[50] w-12 h-12 sm:w-14 sm:h-14 bg-nebula/80 backdrop-blur-md border border-aurora/30 rounded-full flex items-center justify-center text-stardust hover:text-aurora hover:border-aurora hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)] transition-all duration-300 group"
+                className="fixed top-4 right-4 sm:top-8 sm:right-8 z-[50] w-12 h-12 sm:w-14 sm:h-14 bg-nebula/80 backdrop-blur-md border border-aurora/30 rounded-full flex items-center justify-center text-stardust hover:text-aurora hover:border-aurora hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)] transition-all duration-300 group overflow-hidden p-2"
                 data-hover-type="MENU"
             >
-                <Compass size={22} className="group-hover:rotate-90 transition-transform duration-500" />
+                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Menu" className="w-full h-full object-cover scale-[1.3] group-hover:rotate-90 transition-transform duration-500" />
             </button>
 
             <AnimatePresence>

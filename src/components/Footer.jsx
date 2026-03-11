@@ -38,15 +38,14 @@ export default function Footer() {
             {/* Decorative blobs */}
             <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-aurora/[0.02] rounded-full blur-[150px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-solar/[0.02] rounded-full blur-[120px] pointer-events-none" />
-
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-20 pb-10">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-20 pb-10">
                 {/* Top section */}
-                <div className="flex flex-col lg:flex-row gap-16 mb-16">
+                <div className="flex flex-col lg:flex-row gap-12 sm:gap-16 mb-16">
                     {/* Brand column */}
                     <div className="lg:w-[320px] shrink-0">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-aurora to-aurora-deep flex items-center justify-center">
-                                <Plane className="w-5 h-5 text-white -rotate-45" />
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center border border-white/10 shadow-[0_4px_30px_rgba(255,255,255,0.1)] backdrop-blur-sm overflow-hidden p-1">
+                                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Starlight Logo" className="w-full h-full object-cover scale-110" />
                             </div>
                             <span className="font-heading text-xl font-semibold text-stardust tracking-tight">Starlight Airlines</span>
                         </div>
@@ -97,7 +96,7 @@ export default function Footer() {
                         <h3 className="font-heading text-2xl font-semibold text-stardust mb-2">Stay in the loop</h3>
                         <p className="text-comet font-ui text-sm">Get exclusive deals, travel tips, and early access to new routes.</p>
                     </div>
-                    <form className="flex w-full md:w-auto gap-3" onSubmit={e => e.preventDefault()}>
+                    <form className="flex flex-col sm:flex-row w-full md:w-auto gap-3" onSubmit={e => e.preventDefault()}>
                         <input
                             type="email"
                             placeholder="you@example.com"

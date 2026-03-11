@@ -78,55 +78,34 @@ export default function CustomCursor() {
                 />
             ))}
 
-            {/* Outer Glow Ring */}
+            {/* String of Blue Light Sequence */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] transform-gpu flex items-center justify-center"
+                className="fixed top-0 left-0 pointer-events-none z-[9999] transform-gpu flex items-center justify-center"
                 style={{
-                    border: '1.5px solid rgba(59,130,246,0.5)',
-                    backgroundColor: 'rgba(59,130,246,0.08)',
-                    boxShadow: '0 0 12px rgba(59,130,246,0.15)',
+                    width: '60px',
+                    height: '2px',
+                    background: 'linear-gradient(90deg, transparent, rgba(96,165,250,1) 50%, transparent)',
+                    boxShadow: '0 0 20px 4px rgba(59,130,246,0.5)',
                 }}
                 animate={{
-                    x: position.x - 16,
-                    y: position.y - 16,
-                    scale: hoverState ? 2.5 : 1,
-                    backgroundColor: hoverState
-                        ? 'rgba(29, 78, 216, 0.85)'
-                        : 'rgba(59,130,246,0.08)',
-                    borderColor: hoverState
-                        ? 'rgba(29,78,216,0)'
-                        : 'rgba(59,130,246,0.5)',
+                    x: position.x - 30,
+                    y: position.y - 1,
+                    scale: hoverState ? 1.5 : 1,
+                    opacity: hoverState ? 1 : 0.8
                 }}
                 transition={{
                     type: 'spring',
-                    stiffness: 180,
-                    damping: 18,
-                    mass: 0.1
-                }}
-            >
-                <span className={`cursor-text ${hoverState && hoverState !== 'plane' ? 'visible' : ''}`}>
-                    {hoverState !== 'plane' ? hoverState : ''}
-                </span>
-                {hoverState === 'plane' && (
-                    <span className="absolute text-sm">✈️</span>
-                )}
-            </motion.div>
-
-            {/* Inner Dot */}
-            <motion.div
-                className="fixed top-0 left-0 w-1.5 h-1.5 bg-aurora rounded-full pointer-events-none z-[10000] shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-                animate={{
-                    x: position.x - 3,
-                    y: position.y - 3,
-                    opacity: hoverState ? 0 : 1
-                }}
-                transition={{
-                    type: 'spring',
-                    stiffness: 500,
+                    stiffness: 250,
                     damping: 28,
                     mass: 0.1
                 }}
-            />
+            >
+                <div className="absolute top-4 text-[#E8EDF5] font-ui text-[10px] tracking-widest uppercase truncate max-w-[100px] text-center" style={{ textShadow: '0 0 10px rgba(59,130,246,0.9)' }}>
+                    <span className={`transition-opacity duration-300 ${hoverState && hoverState !== 'plane' ? 'opacity-100' : 'opacity-0'}`}>
+                        {hoverState !== 'plane' ? hoverState : ''}
+                    </span>
+                </div>
+            </motion.div>
         </>
     );
 }

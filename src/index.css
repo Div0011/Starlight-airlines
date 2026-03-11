@@ -201,6 +201,115 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
+/* ═══ Section Backgrounds & Animations ═══ */
+
+/* ═══ Section Backgrounds & Animations ═══ */
+
+/* Pair 1: Action (Search Form, Offers) - Half Screen Textured Grid */
+.bg-pair-action {
+    position: relative;
+    overflow: hidden;
+}
+.bg-pair-action::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    background-image: url('/textures/radial.png');
+    background-size: cover;
+    background-repeat: repeat;
+    opacity: 0.15;
+    z-index: 0;
+    animation: pan-grid-action 40s linear infinite;
+    mask-image: radial-gradient(ellipse at center right, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center right, black 0%, transparent 80%);
+    pointer-events: none;
+}
+@keyframes pan-grid-action {
+    0% { background-position: 0 0; }
+    100% { background-position: -400px 0; }
+}
+
+/* Pair 2: Experience (The Experience, Testimonials) - Semicircular Textured */
+.bg-pair-experience {
+    position: relative;
+    overflow: hidden;
+}
+.bg-pair-experience::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150vw;
+    height: 150vw;
+    max-width: 1400px;
+    max-height: 1400px;
+    border-radius: 50%;
+    background-image: url('/textures/topo.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 0;
+    animation: rotate-semi 120s linear infinite;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at center, black 10%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 10%, transparent 65%);
+}
+@keyframes rotate-semi {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* Pair 3: Reach (Fleet, Destinations) - Full Screen Map Grid Overlay */
+.bg-pair-reach {
+    position: relative;
+    overflow: hidden;
+}
+.bg-pair-reach::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/textures/blueprint.png');
+    background-size: cover;
+    background-repeat: repeat;
+    opacity: 0.15;
+    z-index: 0;
+    animation: pan-map-reach 60s linear infinite;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    pointer-events: none;
+}
+@keyframes pan-map-reach {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -400px; }
+}
+
+/* Pair 4: Engagement (Loyalty, CTA) - Diagonal Split Half Texture */
+.bg-pair-engagement {
+    position: relative;
+    overflow: hidden;
+}
+.bg-pair-engagement::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/textures/speed.png');
+    background-size: cover;
+    opacity: 0.25;
+    mask-image: linear-gradient(160deg, transparent 20%, black 50%, transparent 80%);
+    -webkit-mask-image: linear-gradient(160deg, transparent 20%, black 50%, transparent 80%);
+    z-index: 0;
+    animation: pan-diagonal-engage 15s linear infinite;
+    pointer-events: none;
+}
+@keyframes pan-diagonal-engage {
+    0% { background-position: 0 0; }
+    100% { background-position: 50vw -50vh; }
+}
+
 /* ═══ Mobile optimizations ═══ */
 @media (pointer: coarse) {
     button, a, input, select {

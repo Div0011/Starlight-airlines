@@ -17,9 +17,9 @@ export default {
                 comet: '#94A3B8',
             },
             fontFamily: {
-                heading: ['Sora', 'sans-serif'],
+                heading: ['Outfit', 'sans-serif'],
                 body: ['Inter', 'sans-serif'],
-                ui: ['"Space Grotesk"', 'sans-serif'],
+                ui: ['Manrope', 'sans-serif'],
             },
             animation: {
                 'float': 'float 6s ease-in-out infinite',

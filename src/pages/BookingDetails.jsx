@@ -64,7 +64,7 @@ export default function BookingDetails() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="min-h-screen pt-32 px-4 md:px-8 pb-16 w-full max-w-[1200px] mx-auto relative"
+            className="min-h-screen pt-32 px-4 sm:px-6 md:px-8 pb-16 w-full max-w-[1200px] mx-auto relative"
         >
             {/* Background glows */}
             <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-aurora/5 rounded-full blur-[120px] pointer-events-none" />
@@ -152,8 +152,8 @@ export default function BookingDetails() {
                     {step === 4 && (
                         <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
                             <h2 className="text-2xl font-heading font-semibold mb-8 flex items-center gap-3"><CreditCard className="text-aurora" /> Secure Payment</h2>
-                            <div className="bg-gradient-to-br from-nebula/80 to-cosmic/80 p-8 rounded-3xl border border-aurora/10 max-w-lg mx-auto">
-                                <div className="w-full h-48 rounded-xl bg-gradient-to-br from-aurora/20 via-aurora-deep/10 to-cosmic border border-aurora/20 p-6 mb-8 flex flex-col justify-between relative overflow-hidden backdrop-blur-md">
+                            <div className="bg-gradient-to-br from-nebula/80 to-cosmic/80 p-5 sm:p-8 rounded-[24px] sm:rounded-3xl border border-aurora/10 max-w-lg mx-auto">
+                                <div className="w-full h-48 rounded-xl bg-gradient-to-br from-aurora/20 via-aurora-deep/10 to-cosmic border border-aurora/20 p-5 sm:p-6 mb-8 flex flex-col justify-between relative overflow-hidden backdrop-blur-md">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-aurora/10 rounded-full blur-2xl" />
                                     <div className="flex justify-between items-center text-stardust/80 font-ui tracking-widest text-sm uppercase relative z-10">
                                         <span>Credit Card</span>

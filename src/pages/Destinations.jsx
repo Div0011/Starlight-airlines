@@ -37,7 +37,7 @@ function OfferCard({ offer, idx, scrollYProgress }) {
                 <span className="px-4 py-1.5 rounded-full bg-aurora/15 backdrop-blur-md text-aurora font-ui text-xs tracking-widest uppercase border border-aurora/20">{offer.tag}</span>
             </div>
 
-            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-stardust transform-gpu z-10">
+            <div className="absolute inset-0 p-6 sm:p-8 md:p-12 flex flex-col justify-end text-stardust transform-gpu z-10">
                 <div className="flex justify-between items-end transition-transform duration-500 transform group-hover:-translate-y-4">
                     <div className="flex-1 mr-6">
                         <motion.h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-semibold mb-3 drop-shadow-md">
@@ -83,7 +83,7 @@ export default function Destinations() {
             <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-aurora/[0.03] rounded-full blur-[150px] pointer-events-none" />
             <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-solar/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}

@@ -61,13 +61,7 @@ export default function App() {
                     <div className="wind-line" />
                 </div>
 
-                {/* Fixed top-left logo */}
-                <div className="fixed top-4 left-4 sm:top-6 sm:left-6 z-[50] flex items-center gap-2.5">
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-aurora to-aurora-deep flex items-center justify-center shadow-[0_4px_20px_rgba(59,130,246,0.3)] backdrop-blur-sm">
-                        <Plane className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-white -rotate-45" />
-                    </div>
-                    <span className="hidden sm:block font-heading text-sm font-semibold text-stardust/70 tracking-tight">Starlight</span>
-                </div>
+
 
                 {/* Center watermark */}
                 <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[2]">
