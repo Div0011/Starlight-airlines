@@ -8,9 +8,9 @@ const MENU_ITEMS = [
     { name: 'Book Flights', path: '/search', x: 38, y: 15 },
     { name: 'Experience', path: '/', x: 15, y: 55 },
     { name: 'Our Fleet', path: '/', x: 42, y: 48 },
-    { name: 'Destinations', path: '/destinations', x: 68, y: 22 },
+    { name: 'Destinations', path: '/', x: 68, y: 22 },
     { name: 'Loyalty', path: '/', x: 55, y: 68 },
-    { name: 'Offers', path: '/', x: 82, y: 45 },
+    { name: 'Offers', path: '/destinations', x: 82, y: 45 },
     { name: 'Careers', path: '/', x: 30, y: 80 },
     { name: 'Contact', path: '/', x: 75, y: 72 },
 ];
@@ -55,7 +55,7 @@ export default function Navigation() {
             <button
                 onClick={() => setIsOpen(true)}
                 aria-label="Open navigation menu"
-                className="fixed top-4 right-4 sm:top-8 sm:right-8 z-[50] w-12 h-12 sm:w-14 sm:h-14 bg-nebula/80 backdrop-blur-md border border-aurora/20 rounded-full flex items-center justify-center text-stardust hover:text-aurora hover:border-aurora/50 hover:shadow-[0_0_20px_rgba(167,139,250,0.3)] transition-all duration-300 group"
+                className="fixed top-4 right-4 sm:top-8 sm:right-8 z-[50] w-12 h-12 sm:w-14 sm:h-14 bg-nebula/80 backdrop-blur-md border border-aurora/30 rounded-full flex items-center justify-center text-stardust hover:text-aurora hover:border-aurora hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)] transition-all duration-300 group"
                 data-hover-type="MENU"
             >
                 <Compass size={22} className="group-hover:rotate-90 transition-transform duration-500" />
@@ -68,7 +68,7 @@ export default function Navigation() {
                         animate={{ opacity: 1, clipPath: 'circle(150% at calc(100% - 3rem) 3rem)' }}
                         exit={{ opacity: 0, clipPath: 'circle(0% at calc(100% - 3rem) 3rem)' }}
                         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                        className="fixed inset-0 z-[60] bg-cosmic overflow-hidden"
+                        className="fixed inset-0 z-[60] bg-[linear-gradient(135deg,#0B1629,#122E5C,#0D1F3C)] overflow-hidden"
                         role="dialog"
                         aria-modal="true"
                         aria-label="Navigation menu"
@@ -83,7 +83,7 @@ export default function Navigation() {
                         <div
                             className="absolute inset-0 opacity-[0.06] pointer-events-none"
                             style={{
-                                backgroundImage: 'linear-gradient(#A78BFA 1px, transparent 1px), linear-gradient(90deg, #A78BFA 1px, transparent 1px)',
+                                backgroundImage: 'linear-gradient(#3B82F6 1px, transparent 1px), linear-gradient(90deg, #3B82F6 1px, transparent 1px)',
                                 backgroundSize: '50px 50px'
                             }}
                         />
@@ -111,11 +111,11 @@ export default function Navigation() {
                                             <Link
                                                 to={item.path}
                                                 onClick={() => setIsOpen(false)}
-                                                className="flex items-center justify-between py-4 border-b border-white/5 group"
+                                                className="flex items-center justify-between py-4 border-b border-white/10 group"
                                                 aria-label={`Navigate to ${item.name}`}
                                             >
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-2 h-2 rounded-full bg-aurora group-hover:bg-solar group-hover:shadow-[0_0_12px_rgba(251,146,60,0.6)] transition-all" />
+                                                    <div className="w-2 h-2 rounded-full bg-aurora group-hover:bg-aurora-deep group-hover:shadow-[0_0_12px_rgba(29,78,216,0.6)] transition-all" />
                                                     <span className="text-2xl font-heading font-semibold text-stardust/70 group-hover:text-stardust transition-colors">
                                                         {item.name}
                                                     </span>
@@ -149,7 +149,7 @@ export default function Navigation() {
                                             <motion.path
                                                 key={`line-${idx}`}
                                                 d={`M ${hoveredItem.x} ${hoveredItem.y} Q ${midX} ${midY} ${item.x} ${item.y}`}
-                                                stroke="rgba(167,139,250,0.3)"
+                                                stroke="rgba(59,130,246,0.35)"
                                                 strokeWidth="0.15"
                                                 strokeDasharray="0.5 0.5"
                                                 fill="none"
@@ -186,21 +186,21 @@ export default function Navigation() {
                                             >
                                                 {/* Map pin dot */}
                                                 <div className={`w-3 h-3 rounded-full transition-all duration-300 ${hoveredIdx === idx
-                                                    ? 'bg-solar scale-[2] shadow-[0_0_20px_rgba(251,146,60,0.6)]'
-                                                    : 'bg-aurora shadow-[0_0_8px_rgba(167,139,250,0.4)]'
+                                                    ? 'bg-aurora-deep scale-[2] shadow-[0_0_20px_rgba(29,78,216,0.6)]'
+                                                    : 'bg-aurora shadow-[0_0_8px_rgba(59,130,246,0.5)]'
                                                     }`}
                                                 />
                                                 {/* Ping effect on active dot */}
                                                 {hoveredIdx === idx && (
                                                     <motion.div
-                                                        className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-solar/40"
+                                                        className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-aurora/40"
                                                         initial={{ scale: 1, opacity: 0.6 }}
                                                         animate={{ scale: 3, opacity: 0 }}
                                                         transition={{ duration: 1, repeat: Infinity }}
                                                     />
                                                 )}
                                                 <span className={`text-3xl sm:text-4xl md:text-6xl font-heading font-semibold transition-all duration-300 whitespace-nowrap ${hoveredIdx === idx
-                                                    ? 'text-stardust drop-shadow-[0_0_20px_rgba(167,139,250,0.6)]'
+                                                    ? 'text-stardust drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]'
                                                     : 'text-stardust/30'
                                                     }`}>
                                                     {item.name}

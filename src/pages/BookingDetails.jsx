@@ -29,9 +29,9 @@ export default function BookingDetails() {
                                     w-10 h-12 sm:w-12 sm:h-14 rounded-t-xl rounded-b-md relative shadow-lg transform-gpu transition-all duration-300
                                     ${isAisle ? 'mr-4 sm:mr-8' : ''}
                                     ${selectedSeat === seat.id
-                                        ? 'bg-aurora text-cosmic scale-110 !z-20 -translate-y-4 shadow-aurora/40 shadow-xl'
+                                        ? 'bg-aurora text-white scale-110 !z-20 -translate-y-4 shadow-aurora/40 shadow-xl'
                                         : seat.status === 'occupied'
-                                            ? 'bg-white/5 opacity-50 cursor-not-allowed'
+                                            ? 'bg-white/10 opacity-50 cursor-not-allowed'
                                             : seat.status === 'premium'
                                                 ? 'bg-solar/20 border-solar/40 border hover:bg-solar/30'
                                                 : 'bg-white/10 hover:bg-white/20'
@@ -42,7 +42,7 @@ export default function BookingDetails() {
                             >
                                 <div className="absolute top-1 -left-[2px] w-[2px] h-8 bg-black/20 rounded-full" />
                                 <div className="absolute top-1 -right-[2px] w-[2px] h-8 bg-black/20 rounded-full" />
-                                <div className={`absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-3 rounded-full ${selectedSeat === seat.id ? 'bg-white/40' : 'bg-white/10'}`} />
+                                <div className={`absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-3 rounded-full ${selectedSeat === seat.id ? 'bg-aurora/40' : 'bg-white/10'}`} />
                                 <span className="text-xs font-ui mt-6 block">{seat.id}</span>
                             </button>
                         </div>
@@ -89,10 +89,10 @@ export default function BookingDetails() {
                 {['Passenger Info', 'Seat Selection', 'Add-ons', 'Payment'].map((label, idx) => (
                     <div key={idx} className="flex flex-col items-center gap-3">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center font-ui text-sm transition-all duration-300 ${step > idx
-                            ? 'bg-aurora text-cosmic shadow-[0_0_12px_rgba(167,139,250,0.4)]'
+                            ? 'bg-aurora text-white shadow-[0_0_12px_rgba(59,130,246,0.4)]'
                             : step === idx + 1
                                 ? 'bg-cosmic border-2 border-aurora text-aurora'
-                                : 'bg-cosmic border border-white/20 text-comet'
+                                : 'bg-cosmic border border-white/10 text-comet'
                             }`}>
                             {idx + 1}
                         </div>
@@ -104,16 +104,16 @@ export default function BookingDetails() {
             </div>
 
             {/* Content Area */}
-            <div className="bg-nebula/50 backdrop-blur-md border border-aurora/10 rounded-[28px] p-6 md:p-12 lg:p-16 min-h-[500px]">
+            <div className="glass-card rounded-[28px] p-4 sm:p-6 md:p-12 lg:p-16 min-h-[400px] sm:min-h-[500px]">
                 <AnimatePresence mode="wait">
                     {step === 1 && (
                         <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
                             <h2 className="text-2xl font-heading font-semibold mb-8 flex items-center gap-3"><User className="text-aurora" /> Passenger Information</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-ui">
-                                <input type="text" placeholder="First Name" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-4 px-6 text-stardust focus:border-aurora/50 focus:shadow-[0_0_12px_rgba(167,139,250,0.1)] outline-none transition-all" data-hover-type="TYPE" />
-                                <input type="text" placeholder="Last Name" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-4 px-6 text-stardust focus:border-aurora/50 focus:shadow-[0_0_12px_rgba(167,139,250,0.1)] outline-none transition-all" data-hover-type="TYPE" />
-                                <input type="email" placeholder="Email Address" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-4 px-6 text-stardust focus:border-aurora/50 focus:shadow-[0_0_12px_rgba(167,139,250,0.1)] outline-none transition-all" data-hover-type="TYPE" />
-                                <input type="text" placeholder="Passport Number" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-4 px-6 text-stardust focus:border-aurora/50 focus:shadow-[0_0_12px_rgba(167,139,250,0.1)] outline-none transition-all" data-hover-type="TYPE" />
+                                <input type="text" placeholder="First Name" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 text-stardust focus:border-aurora focus:shadow-[0_0_12px_rgba(59,130,246,0.15)] outline-none transition-all" data-hover-type="TYPE" />
+                                <input type="text" placeholder="Last Name" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 text-stardust focus:border-aurora focus:shadow-[0_0_12px_rgba(59,130,246,0.15)] outline-none transition-all" data-hover-type="TYPE" />
+                                <input type="email" placeholder="Email Address" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 text-stardust focus:border-aurora focus:shadow-[0_0_12px_rgba(59,130,246,0.15)] outline-none transition-all" data-hover-type="TYPE" />
+                                <input type="text" placeholder="Passport Number" className="w-full bg-cosmic/60 border border-white/10 rounded-2xl py-3 sm:py-4 px-4 sm:px-6 text-stardust focus:border-aurora focus:shadow-[0_0_12px_rgba(59,130,246,0.15)] outline-none transition-all" data-hover-type="TYPE" />
                             </div>
                         </motion.div>
                     )}
@@ -134,9 +134,9 @@ export default function BookingDetails() {
                                     { title: 'Lounge Access', price: '$120', desc: 'Relax in our premium lounge before flight' },
                                     { title: 'Gourmet Meal Upgrade', price: '$45', desc: "Pre-order from our chef's special menu" }
                                 ].map((addon, i) => (
-                                    <div key={i} className="flex items-center justify-between p-5 md:p-6 rounded-2xl border border-white/[0.06] bg-cosmic/40 hover:bg-aurora/[0.04] hover:border-aurora/20 transition-all cursor-pointer group" data-hover-type="SELECT">
+                                    <div key={i} className="flex items-center justify-between p-5 md:p-6 rounded-2xl border border-white/10 bg-cosmic/40 hover:bg-aurora/[0.06] hover:border-aurora/30 transition-all cursor-pointer group" data-hover-type="SELECT">
                                         <div className="flex items-center gap-4 md:gap-6">
-                                            <input type="checkbox" className="w-5 h-5 accent-[#A78BFA] bg-transparent" />
+                                <input type="checkbox" className="w-5 h-5 accent-[#3B82F6] bg-transparent" />
                                             <div>
                                                 <h3 className="font-heading text-lg md:text-xl text-stardust">{addon.title}</h3>
                                                 <p className="text-comet text-sm font-ui mt-1">{addon.desc}</p>
@@ -167,7 +167,7 @@ export default function BookingDetails() {
                                 </div>
 
                                 <button
-                                    className="w-full py-4 rounded-xl bg-gradient-to-r from-aurora to-aurora-deep hover:from-solar hover:to-aurora text-white font-ui font-semibold uppercase tracking-widest transition-all duration-500 shadow-[0_0_20px_rgba(167,139,250,0.3)] hover:shadow-[0_0_30px_rgba(251,146,60,0.3)]"
+                                    className="btn-wind w-full py-4 rounded-xl bg-gradient-to-r from-aurora to-aurora-deep hover:from-aurora-deep hover:to-aurora text-white font-ui font-semibold uppercase tracking-widest transition-all duration-500 shadow-[0_4px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_4px_25px_rgba(29,78,216,0.3)]"
                                     data-hover-type="CONFIRM"
                                 >
                                     Confirm & Pay $4,500
@@ -186,7 +186,7 @@ export default function BookingDetails() {
                 {step > 1 ? (
                     <button
                         onClick={() => setStep(step - 1)}
-                        className="px-8 py-3 rounded-full border border-white/20 text-stardust uppercase text-xs tracking-widest font-ui hover:bg-white/10 hover:border-aurora/30 transition-all"
+                        className="px-8 py-3 rounded-full border border-white/10 text-stardust uppercase text-xs tracking-widest font-ui hover:bg-aurora/10 hover:border-aurora transition-all"
                         data-hover-type="BACK"
                     >
                         Go Back
@@ -196,7 +196,7 @@ export default function BookingDetails() {
                 {step < 4 && (
                     <button
                         onClick={() => setStep(step + 1)}
-                        className="px-8 py-3 rounded-full bg-gradient-to-r from-aurora to-aurora-deep text-white uppercase text-xs tracking-widest font-ui transition-all shadow-[0_0_15px_rgba(167,139,250,0.3)] hover:shadow-[0_0_25px_rgba(167,139,250,0.5)]"
+                        className="btn-wind px-8 py-3 rounded-full bg-gradient-to-r from-aurora to-aurora-deep text-white uppercase text-xs tracking-widest font-ui transition-all shadow-[0_4px_15px_rgba(59,130,246,0.3)] hover:shadow-[0_4px_25px_rgba(59,130,246,0.5)]"
                         data-hover-type="NEXT"
                     >
                         Continue

@@ -27,13 +27,13 @@ export default function SearchFlights() {
                 <span className="text-stardust">NYC</span>
                 <ArrowRight className="text-aurora w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
                 <span className="text-stardust">MLE</span>
-                <span className="text-xs sm:text-sm md:text-xl text-comet font-ui uppercase tracking-widest ml-2 sm:ml-4 mt-1 sm:mt-2 border-l border-white/20 pl-2 sm:pl-4">Nov 12, 2 Passengers</span>
+                <span className="text-xs sm:text-sm md:text-xl text-comet font-ui uppercase tracking-widest ml-2 sm:ml-4 mt-1 sm:mt-2 border-l border-white/10 pl-2 sm:pl-4">Nov 12, 2 Passengers</span>
             </h1>
 
             <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
                 {/* Filters Panel */}
                 <div className="lg:w-1/4 w-full">
-                    <div className="bg-nebula/60 backdrop-blur-md border border-aurora/10 p-8 rounded-[24px] sticky top-32">
+                        <div className="glass-card glass-shine p-6 sm:p-8 rounded-[24px] sticky top-32">
                         <div className="flex items-center gap-3 mb-8">
                             <Filter className="text-aurora w-5 h-5" />
                             <h3 className="font-heading text-xl text-stardust">Filters</h3>
@@ -45,7 +45,7 @@ export default function SearchFlights() {
                                 <div className="space-y-3">
                                     {['Non-stop', '1 Stop', '2+ Stops'].map((stop, i) => (
                                         <label key={stop} className="flex items-center gap-3 cursor-pointer group" data-hover-type="SELECT">
-                                            <input type="checkbox" defaultChecked={i > 0} className="accent-[#A78BFA] h-5 w-5 rounded bg-cosmic border-white/20" />
+                                            <input type="checkbox" defaultChecked={i > 0} className="accent-[#3B82F6] h-5 w-5 rounded bg-cosmic border-white/10" />
                                             <span className="text-stardust opacity-80 group-hover:opacity-100 transition-opacity">{stop}</span>
                                         </label>
                                     ))}
@@ -81,10 +81,10 @@ export default function SearchFlights() {
                             transition={{ delay: idx * 0.12, duration: 0.5 }}
                             onClick={() => navigate('/book')}
                             data-hover-type="SELECT"
-                            className="group bg-nebula/50 backdrop-blur-md border border-white/[0.06] hover:border-aurora/40 hover:bg-aurora/[0.03] p-6 md:p-8 rounded-[24px] cursor-pointer transition-all duration-500 overflow-hidden relative"
+                            className="group glass-card glass-shine hover:border-aurora/50 hover:bg-aurora/[0.05] p-4 sm:p-6 md:p-8 rounded-[24px] cursor-pointer transition-all duration-500 overflow-hidden relative"
                         >
                             {/* Shine sweep on hover */}
-                            <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/[0.03] to-transparent skew-x-[45deg] group-hover:left-[200%] transition-all duration-1000 ease-out pointer-events-none" />
+                            <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-aurora/[0.05] to-transparent skew-x-[45deg] group-hover:left-[200%] transition-all duration-1000 ease-out pointer-events-none" />
 
                             <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 relative z-10">
 
@@ -126,7 +126,7 @@ export default function SearchFlights() {
                                 <div className="w-full md:w-1/4 text-right flex flex-col items-end">
                                     <div className="text-2xl md:text-3xl font-heading text-stardust">{flight.price}</div>
                                     <div className="text-xs text-comet font-ui tracking-wide mb-4">per passenger</div>
-                                    <button className="py-2.5 px-6 rounded-full bg-aurora/10 hover:bg-aurora hover:text-cosmic text-stardust font-ui text-sm uppercase tracking-widest transition-all duration-300 border border-aurora/20 hover:border-aurora hover:shadow-[0_0_20px_rgba(167,139,250,0.3)]">
+                                        <button className="btn-wind py-2.5 px-6 rounded-full bg-aurora/15 hover:bg-aurora hover:text-white text-stardust font-ui text-sm uppercase tracking-widest transition-all duration-300 border border-aurora/30 hover:border-aurora hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)]">
                                         Book Flight
                                     </button>
                                 </div>

@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect, lazy } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Plane } from 'lucide-react';
 import CustomCursor from './components/CustomCursor';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import SearchFlights from './pages/SearchFlights';
-import BookingDetails from './pages/BookingDetails';
-import Destinations from './pages/Destinations';
+
+const SearchFlights = lazy(() => import('./pages/SearchFlights'));
+const BookingDetails = lazy(() => import('./pages/BookingDetails'));
+const Destinations = lazy(() => import('./pages/Destinations'));
 
 // Scroll to top on every route change
 function ScrollToTop() {
@@ -24,12 +26,18 @@ const AnimatedRoutes = () => {
 
     return (
         <AnimatePresence mode='wait'>
-            <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<SearchFlights />} />
-                <Route path="/book" element={<BookingDetails />} />
-                <Route path="/destinations" element={<Destinations />} />
-            </Routes>
+            <Suspense fallback={
+                <div className="min-h-screen flex items-center justify-center bg-[#0B1629]">
+                    <Plane className="w-10 h-10 text-aurora animate-pulse" />
+                </div>
+            }>
+                <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/search" element={<SearchFlights />} />
+                    <Route path="/book" element={<BookingDetails />} />
+                    <Route path="/destinations" element={<Destinations />} />
+                </Routes>
+            </Suspense>
         </AnimatePresence>
     );
 };
@@ -40,6 +48,32 @@ export default function App() {
             <div className="relative min-h-screen">
                 <ScrollToTop />
                 <CustomCursor />
+
+                {/* Wind background lines */}
+                <div className="wind-bg">
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                    <div className="wind-line" />
+                </div>
+
+                {/* Fixed top-left logo */}
+                <div className="fixed top-4 left-4 sm:top-6 sm:left-6 z-[50] flex items-center gap-2.5">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-aurora to-aurora-deep flex items-center justify-center shadow-[0_4px_20px_rgba(59,130,246,0.3)] backdrop-blur-sm">
+                        <Plane className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-white -rotate-45" />
+                    </div>
+                    <span className="hidden sm:block font-heading text-sm font-semibold text-stardust/70 tracking-tight">Starlight</span>
+                </div>
+
+                {/* Center watermark */}
+                <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[2]">
+                    <Plane className="w-64 h-64 sm:w-80 sm:h-80 text-aurora/[0.03] -rotate-45 transform-gpu" />
+                </div>
+
                 <Navigation />
                 <AnimatedRoutes />
                 <Footer />

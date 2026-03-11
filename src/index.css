@@ -4,8 +4,9 @@
 
 @layer base {
     body {
-        background-color: #020617;
-        color: #F8FAFC;
+        background: linear-gradient(135deg, #0B1629 0%, #0F2847 20%, #122E5C 40%, #0D1F3C 60%, #0A1628 80%, #0E2445 100%);
+        background-attachment: fixed;
+        color: #E8EDF5;
         font-family: 'Inter', sans-serif;
     }
 
@@ -15,7 +16,126 @@
     }
 }
 
-/* Custom Cursor Styles */
+/* ═══ Wind Background ═══ */
+.wind-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.wind-line {
+    position: absolute;
+    height: 1px;
+    border-radius: 999px;
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(96,165,250,0.12) 60%, transparent);
+}
+
+.wind-line:nth-child(1) { top: 15%; width: 40vw; animation: wind-sweep 9s linear infinite; }
+.wind-line:nth-child(2) { top: 30%; width: 55vw; animation: wind-sweep 13s linear 2s infinite; }
+.wind-line:nth-child(3) { top: 50%; width: 35vw; animation: wind-sweep 11s linear 4s infinite; }
+.wind-line:nth-child(4) { top: 65%; width: 50vw; animation: wind-sweep 14s linear 1s infinite; }
+.wind-line:nth-child(5) { top: 80%; width: 30vw; animation: wind-sweep 10s linear 6s infinite; }
+.wind-line:nth-child(6) { top: 22%; width: 45vw; animation: wind-sweep 12s linear 3s infinite; }
+.wind-line:nth-child(7) { top: 42%; width: 38vw; animation: wind-sweep 8s linear 7s infinite; }
+.wind-line:nth-child(8) { top: 72%; width: 48vw; animation: wind-sweep 15s linear 5s infinite; }
+
+@keyframes wind-sweep {
+    0%   { transform: translateX(-110%) rotate(-4deg); opacity: 0; }
+    8%   { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateX(110vw) rotate(-4deg); opacity: 0; }
+}
+
+/* ═══ Glossy Card Effect ═══ */
+.glass-card {
+    background: linear-gradient(135deg, rgba(17,24,39,0.7) 0%, rgba(10,14,26,0.85) 100%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(59,130,246,0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%, rgba(59,130,246,0.04) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.06), transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glass-card:hover {
+    border-color: rgba(59,130,246,0.3);
+    box-shadow: 0 8px 32px rgba(59,130,246,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Glossy shimmer highlight on hover */
+.glass-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.8s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.glass-shine:hover::before {
+    left: 125%;
+}
+
+/* ═══ Button Wind Sweep ═══ */
+.btn-wind {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.btn-wind::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-30deg);
+    transition: none;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.btn-wind:hover::before {
+    left: 200%;
+    transition: left 0.7s ease;
+}
+
+/* ═══ Custom Cursor Styles ═══ */
 .custom-cursor {
     position: fixed;
     pointer-events: none;
@@ -37,60 +157,64 @@
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s;
-    color: #020617;
+    color: #0A0E1A;
 }
 
 .cursor-text.visible {
     opacity: 1;
 }
 
-/* Styled Scrollbar */
+/* ═══ Styled Scrollbar ═══ */
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #020617;
+    background: #0A0E1A;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(167, 139, 250, 0.25);
+    background: rgba(59, 130, 246, 0.35);
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(167, 139, 250, 0.5);
+    background: rgba(59, 130, 246, 0.6);
 }
 
-/* Selection */
+/* ═══ Selection ═══ */
 ::selection {
-    background: rgba(167, 139, 250, 0.3);
-    color: #F8FAFC;
+    background: rgba(59, 130, 246, 0.3);
+    color: #E8EDF5;
 }
 
-/* Accessibility focus styles */
+/* ═══ Accessibility focus ═══ */
 *:focus-visible {
-    outline: 2px solid #A78BFA;
+    outline: 2px solid #3B82F6;
     outline-offset: 2px;
     border-radius: 4px;
 }
 
-/* Smooth scroll for page */
+/* ═══ Smooth scroll ═══ */
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
 }
 
-/* Mobile touch improvements */
+/* ═══ Mobile optimizations ═══ */
 @media (pointer: coarse) {
     button, a, input, select {
         min-height: 44px;
     }
+    .wind-bg { display: none; }
 }
 
-/* Prevent horizontal overflow on mobile */
 @media (max-width: 767px) {
-    body {
-        overflow-x: hidden;
-    }
+    body { overflow-x: hidden; }
+    .glass-card::after { display: none; }
+    .wind-line:nth-child(n+5) { display: none; }
+}
+
+@media (max-width: 480px) {
+    .wind-line:nth-child(n+4) { display: none; }
 }

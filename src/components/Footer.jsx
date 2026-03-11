@@ -4,7 +4,7 @@ import { Plane, Instagram, Twitter, Youtube, MapPin, Phone, Mail } from 'lucide-
 const FOOTER_LINKS = {
     'Fly With Us': [
         { name: 'Book Flights', path: '/search' },
-        { name: 'Destinations', path: '/destinations' },
+        { name: 'Destinations', path: '/' },
         { name: 'Flight Status', path: '/' },
         { name: 'Check-In Online', path: '/' },
         { name: 'Manage Booking', path: '/' },
@@ -34,7 +34,7 @@ const FOOTER_LINKS = {
 
 export default function Footer() {
     return (
-        <footer className="bg-cosmic border-t border-white/5 relative overflow-hidden">
+        <footer className="bg-gradient-to-b from-transparent via-[#0B1629]/80 to-[#0B1629] border-t border-white/5 relative overflow-hidden">
             {/* Decorative blobs */}
             <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-aurora/[0.02] rounded-full blur-[150px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-solar/[0.02] rounded-full blur-[120px] pointer-events-none" />
@@ -92,7 +92,7 @@ export default function Footer() {
                 </div>
 
                 {/* Newsletter */}
-                <div className="bg-nebula/40 backdrop-blur-xl border border-aurora/10 rounded-3xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-center gap-8">
+                <div className="glass-card rounded-3xl p-6 sm:p-8 md:p-10 mb-16 flex flex-col md:flex-row items-center gap-6 sm:gap-8">
                     <div className="flex-1">
                         <h3 className="font-heading text-2xl font-semibold text-stardust mb-2">Stay in the loop</h3>
                         <p className="text-comet font-ui text-sm">Get exclusive deals, travel tips, and early access to new routes.</p>
@@ -101,9 +101,9 @@ export default function Footer() {
                         <input
                             type="email"
                             placeholder="you@example.com"
-                            className="flex-1 md:w-72 bg-cosmic/60 border border-white/10 rounded-xl py-3 px-5 text-stardust placeholder:text-comet/40 outline-none focus:border-aurora/50 font-ui text-sm transition-all"
+                            className="flex-1 md:w-72 bg-cosmic/60 border border-white/10 rounded-xl py-3 px-5 text-stardust placeholder:text-comet/40 outline-none focus:border-aurora font-ui text-sm transition-all"
                         />
-                        <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-aurora to-aurora-deep text-white font-ui font-semibold text-sm tracking-wider uppercase hover:from-solar hover:to-aurora transition-all duration-500 shrink-0">
+                        <button className="btn-wind px-6 py-3 rounded-xl bg-gradient-to-r from-aurora to-aurora-deep text-white font-ui font-semibold text-sm tracking-wider uppercase hover:from-aurora-deep hover:to-aurora transition-all duration-500 shrink-0">
                             Subscribe
                         </button>
                     </form>
@@ -121,7 +121,7 @@ export default function Footer() {
                     </div>
                     <div className="flex items-center gap-4">
                         {[Instagram, Twitter, Youtube].map((Icon, idx) => (
-                            <a key={idx} href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-comet/50 hover:text-aurora hover:border-aurora/30 transition-all duration-300">
+                            <a key={idx} href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-comet/50 hover:text-aurora hover:border-aurora transition-all duration-300">
                                 <Icon className="w-4 h-4" />
                             </a>
                         ))}
