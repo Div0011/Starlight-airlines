@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Plane, Calendar, Users, Briefcase, ArrowRight, Star, Globe, Shield, Clock, Award, Download, Quote } from 'lucide-react';
+import FeaturedDestinations from '../components/FeaturedDestinations';
 
 const FRAME_COUNT = 160;
 const BASE = import.meta.env.BASE_URL;
@@ -113,9 +114,9 @@ export default function Home() {
 
     /* Scroll-driven canvas animation — contained in the hero wrapper only */
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-    const frameIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
-    const titleOpacity = useTransform(scrollYProgress, [0.15, 0.25, 0.6, 0.85], [0, 1, 1, 0]);
-    const titleY = useTransform(scrollYProgress, [0.6, 0.85], ['0vh', '-15vh']);
+    const frameIndex = useTransform(scrollYProgress, [0, 0.75], [0, FRAME_COUNT - 1], { clamp: true });
+    const titleOpacity = useTransform(scrollYProgress, [0.65, 0.8, 0.92, 1.0], [0, 1, 1, 0]);
+    const titleY = useTransform(scrollYProgress, [0.92, 1.0], ['0vh', '-10vh']);
 
     const drawFrame = useCallback((latestIndex) => {
         const canvas = canvasRef.current;
@@ -165,7 +166,7 @@ export default function Home() {
             {/* ════════════════════════════════════════
                  HERO — Scroll-driven canvas animation
                  ════════════════════════════════════════ */}
-            <div ref={heroRef} className="relative h-[250vh]">
+            <div ref={heroRef} className="relative h-[400vh]">
                 <div className="sticky top-0 h-screen overflow-hidden isolate">
                     <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'contrast(1.05) saturate(1.15) brightness(1.02)' }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B1629]/60 via-transparent to-[#0B1629]/30 pointer-events-none" />
@@ -181,7 +182,7 @@ export default function Home() {
                     </motion.div>
 
                     {/* Scroll indicator */}
-                    <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none" style={{ opacity: useTransform(scrollYProgress, [0, 0.15], [1, 0]) }}>
+                    <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none" style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}>
                         <span className="font-ui text-xs tracking-[0.3em] uppercase text-white/60">Scroll to explore</span>
                         <motion.div className="w-5 h-8 rounded-full border border-aurora/30 flex justify-center pt-2" animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity }}>
                             <motion.div className="w-1 h-2 bg-aurora rounded-full" animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
@@ -255,6 +256,9 @@ export default function Home() {
                     </div>
                 </RevealSection>
             </section>
+
+            {/* Featured Destinations Carousel Section */}
+            <FeaturedDestinations />
 
             {/* The Experience */}
             <section className="relative py-16 sm:py-24 bg-pair-experience">

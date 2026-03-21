@@ -5,6 +5,7 @@ import { Plane } from 'lucide-react';
 import CustomCursor from './components/CustomCursor';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import VantaBackground from './components/VantaBackground';
 import Home from './pages/Home';
 
 const SearchFlights = lazy(() => import('./pages/SearchFlights'));
@@ -27,7 +28,7 @@ const AnimatedRoutes = () => {
     return (
         <AnimatePresence mode='wait'>
             <Suspense fallback={
-                <div className="min-h-screen flex items-center justify-center bg-[#0B1629]">
+                <div className="min-h-screen flex items-center justify-center bg-transparent">
                     <Plane className="w-10 h-10 text-aurora animate-pulse" />
                 </div>
             }>
@@ -49,17 +50,8 @@ export default function App() {
                 <ScrollToTop />
                 <CustomCursor />
 
-                {/* Wind background lines */}
-                <div className="wind-bg">
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                    <div className="wind-line" />
-                </div>
+                {/* Unified Vanta Background */}
+                <VantaBackground />
 
 
 
