@@ -116,6 +116,7 @@ export default function Home() {
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
     const frameIndex = useTransform(scrollYProgress, [0, 0.75], [0, FRAME_COUNT - 1], { clamp: true });
     const titleOpacity = useTransform(scrollYProgress, [0.65, 0.8, 0.92, 1.0], [0, 1, 1, 0]);
+    const titleBlur = useTransform(scrollYProgress, [0.65, 0.8, 0.92, 1.0], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
     const titleY = useTransform(scrollYProgress, [0.92, 1.0], ['0vh', '-10vh']);
 
     const drawFrame = useCallback((latestIndex) => {
@@ -168,10 +169,10 @@ export default function Home() {
                  ════════════════════════════════════════ */}
             <div ref={heroRef} className="relative h-[400vh]">
                 <div className="sticky top-0 h-screen overflow-hidden isolate">
-                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'contrast(1.05) saturate(1.15) brightness(1.02)' }} />
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'contrast(1.08) saturate(1.1) brightness(1.05)', imageRendering: '-webkit-optimize-contrast' }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B1629]/60 via-transparent to-[#0B1629]/30 pointer-events-none" />
 
-                    <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10" style={{ opacity: titleOpacity, y: titleY }}>
+                    <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10" style={{ opacity: titleOpacity, y: titleY, filter: titleBlur }}>
                         <div className="flex flex-col items-center">
                             <h1 className="text-3xl sm:text-5xl md:text-8xl font-heading font-bold text-white drop-shadow-2xl tracking-tighter text-center" style={{ textShadow: '0 0 60px rgba(59,130,246,0.4)' }}>
                                 STARLIGHT AIRLINES

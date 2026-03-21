@@ -29,12 +29,13 @@ const VantaBackground = () => {
                         backgroundColor: 0x0B1629,
                         color1: 0x82C3FF,
                         color2: 0xFACC15,
-                        birdSize: 1.5,
-                        wingSpan: 30,
-                        separation: 50,
+                        birdSize: 1.0,
+                        wingSpan: 40,
+                        separation: 80,
                         alignment: 50,
                         cohesion: 50,
-                        quantity: 4.00
+                        quantity: 3.00,
+                        speedLimit: 2.00
                     });
                 }
             });
