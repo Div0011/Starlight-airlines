@@ -38,11 +38,11 @@ function LazyImg({ src, alt, className, style }) {
 
 /* ── Animated section wrapper with different reveal effects ── */
 const revealVariants = {
-    slideUp: { hidden: { opacity: 0, y: 80 }, visible: { opacity: 1, y: 0 } },
-    slideLeft: { hidden: { opacity: 0, x: -80 }, visible: { opacity: 1, x: 0 } },
-    slideRight: { hidden: { opacity: 0, x: 80 }, visible: { opacity: 1, x: 0 } },
-    zoomIn: { hidden: { opacity: 0, scale: 0.85 }, visible: { opacity: 1, scale: 1 } },
-    fadeIn: { hidden: { opacity: 0 }, visible: { opacity: 1 } },
+    slideUp: { hidden: { opacity: 0, y: 100, rotateX: 15 }, visible: { opacity: 1, y: 0, rotateX: 0 } },
+    slideLeft: { hidden: { opacity: 0, x: -100, skewX: -5 }, visible: { opacity: 1, x: 0, skewX: 0 } },
+    slideRight: { hidden: { opacity: 0, x: 100, skewX: 5 }, visible: { opacity: 1, x: 0, skewX: 0 } },
+    zoomIn: { hidden: { opacity: 0, scale: 0.8, rotateY: 10 }, visible: { opacity: 1, scale: 1, rotateY: 0 } },
+    fadeIn: { hidden: { opacity: 0, filter: 'blur(10px)' }, visible: { opacity: 1, filter: 'blur(0px)' } },
 };
 
 function RevealSection({ children, variant = 'fadeIn', className = '', delay = 0 }) {
@@ -115,10 +115,13 @@ export default function Home() {
 
     /* Scroll-driven canvas animation — contained in the hero wrapper only */
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-    const frameIndex = useTransform(scrollYProgress, [0, 0.75], [0, FRAME_COUNT - 1], { clamp: true });
-    const titleOpacity = useTransform(scrollYProgress, [0.65, 0.8, 0.92, 1.0], [0, 1, 1, 0]);
-    const titleBlur = useTransform(scrollYProgress, [0.65, 0.8, 0.92, 1.0], ["blur(12px)", "blur(0px)", "blur(0px)", "blur(12px)"]);
-    const titleY = useTransform(scrollYProgress, [0.92, 1.0], ['0vh', '-10vh']);
+    const frameIndex = useTransform(scrollYProgress, [0, 0.7], [0, FRAME_COUNT - 1], { clamp: true });
+    
+    // Title persists longer and moves with more depth (parallax + scale)
+    const titleOpacity = useTransform(scrollYProgress, [0.65, 0.8, 0.95, 1.0], [0, 1, 1, 0]);
+    const titleBlur = useTransform(scrollYProgress, [0.65, 0.8, 0.95, 1.0], ["blur(15px)", "blur(0px)", "blur(0px)", "blur(20px)"]);
+    const titleY = useTransform(scrollYProgress, [0.8, 1.0], ['0vh', '-25vh']);
+    const titleScale = useTransform(scrollYProgress, [0.8, 1.0], [1, 0.85]);
 
     const drawFrame = useCallback((latestIndex) => {
         const canvas = canvasRef.current;
@@ -170,10 +173,10 @@ export default function Home() {
                  ════════════════════════════════════════ */}
             <div ref={heroRef} className="relative h-[400vh]">
                 <div className="sticky top-0 h-screen overflow-hidden isolate">
-                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'contrast(1.08) saturate(1.1) brightness(1.05)', imageRendering: '-webkit-optimize-contrast' }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1629]/60 via-transparent to-[#0B1629]/30 pointer-events-none" />
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'contrast(1.1) saturate(1.1) brightness(1.05)', imageRendering: '-webkit-optimize-contrast' }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1629]/80 via-transparent to-[#0B1629]/40 pointer-events-none" />
 
-                    <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10" style={{ opacity: titleOpacity, y: titleY, filter: titleBlur }}>
+                    <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10" style={{ opacity: titleOpacity, y: titleY, scale: titleScale, filter: titleBlur }}>
                         <div className="flex flex-col items-center">
                             <h1 className="text-3xl sm:text-5xl md:text-8xl font-heading font-bold text-white drop-shadow-2xl tracking-tighter text-center" style={{ textShadow: '0 0 60px rgba(59,130,246,0.4)' }}>
                                 STARLIGHT AIRLINES
