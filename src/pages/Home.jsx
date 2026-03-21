@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Plane, Calendar, Users, Briefcase, ArrowRight, Star, Globe, Shield, Clock, Award, Download, Quote } from 'lucide-react';
 import FeaturedDestinations from '../components/FeaturedDestinations';
+import InteractiveTimeline from '../components/InteractiveTimeline';
 
 const FRAME_COUNT = 160;
 const BASE = import.meta.env.BASE_URL;
@@ -301,6 +302,9 @@ export default function Home() {
                     </div>
                 </RevealSection>
             </section>
+
+            {/* Interactive Timeline Journey */}
+            <InteractiveTimeline />
 
             {/* ════════════════════════════════════════
                  TRANSITION 1 → Slide Up
